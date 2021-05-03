@@ -237,8 +237,7 @@ app.add_url_rule('/', view_func=path_view)
 app.add_url_rule('/<path:p>', view_func=path_view)
 
 if __name__ == '__main__':
-    bind = os.getenv('FS_BIND', '0.0.0.0')
     port = os.getenv('FS_PORT', '8000')
     root = os.path.normpath(os.getenv('FS_PATH', '/tmp'))
     key = os.getenv('FS_KEY')
-    app.run(bind, port, threaded=True, debug=False)
+    app.run(port, threaded=True, debug=False)
