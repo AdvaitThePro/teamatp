@@ -1,0 +1,5 @@
+flask
+Werkzurg
+gunicorn
+humanize
+pathlib2
