@@ -148,7 +148,7 @@ class PathView(MethodView):
             info = {}
             if os.path.isdir(dir_path):
                 try:
-                    filename = secure_filename(os.path.basename(path))
+                    filename = werkzueg.secure_filename(os.path.basename(path))
                     with open(os.path.join(dir_path, filename), 'wb') as f:
                         f.write(request.stream.read())
                 except Exception as e:
@@ -180,7 +180,7 @@ class PathView(MethodView):
                 files = request.files.getlist('files[]')
                 for file in files:
                     try:
-                        filename = secure_filename(file.filename)
+                        filename = werkzueg.secure_filename(file.filename)
                         file.save(os.path.join(path, filename))
                     except Exception as e:
                         info['status'] = 'error'
@@ -210,7 +210,7 @@ class PathView(MethodView):
             info = {}
             if os.path.isdir(dir_path):
                 try:
-                    filename = secure_filename(os.path.basename(path))
+                    filename = werkzueg.secure_filename(os.path.basename(path))
                     os.remove(os.path.join(dir_path, filename))
                     os.rmdir(dir_path)
                 except Exception as e:
